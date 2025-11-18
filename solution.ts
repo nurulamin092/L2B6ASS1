@@ -21,3 +21,18 @@ function formatValue(value: string | number | boolean) {
     console.log("Error:", (error as Error).message);
   }
 }
+
+function getLength(value: string | any[]): number {
+  try {
+    if (typeof value === "string") {
+      return value.length;
+    } else if (Array.isArray(value)) {
+      return value.length;
+    } else {
+      throw new Error("Invalid input type");
+    }
+  } catch (error) {
+    console.log("Error:", (error as Error).message);
+    return 0;
+  }
+}
