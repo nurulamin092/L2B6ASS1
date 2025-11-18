@@ -55,6 +55,18 @@ type item = {
   rating: number;
 };
 
-const filterByRating = (items: item[]): item[] => {
+function filterByRating(items: item[]): item[] {
   return items.filter((item) => item.rating >= 4);
+}
+
+type userType = {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
 };
+
+function filterActiveUser(users: userType[]): userType[] {
+  const activeUser = users.filter((user) => user.isActive);
+  return activeUser;
+}
