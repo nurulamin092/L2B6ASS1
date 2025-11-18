@@ -7,7 +7,7 @@ function formatValue(value: string | number | boolean) {
       if (value.trim() === "") {
         throw new Error("string value can't empty");
       }
-      return value.toUpperCase;
+      return value.toUpperCase();
     } else if (typeof value === "number") {
       if (value < 0) {
         throw new Error("Negative value not allow");
