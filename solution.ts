@@ -66,7 +66,7 @@ type userType = {
   isActive: boolean;
 };
 
-function filterActiveUser(users: userType[]): userType[] {
+function filterActiveUsers(users: userType[]): userType[] {
   const activeUser = users.filter((user) => user.isActive);
   return activeUser;
 }
@@ -89,17 +89,9 @@ function printBookDetails(book: Book) {
   );
 }
 
-const myBook: Book = {
-  title: "The Great Gatsby",
-  author: "F. Scott Fitzgerald",
-  publishedYear: 1925,
-  isAvailable: false,
-};
-printBookDetails(myBook);
-
 type Value = string | number;
 
-const getUniqueValue = (arr1: Value[], arr2: Value[]): Value[] => {
+const getUniqueValues = (arr1: Value[], arr2: Value[]): Value[] => {
   const result: Value[] = [];
 
   const margeArr: Value[] = [...arr1, ...arr2];
@@ -158,9 +150,3 @@ const calculateTotalPrice = (products: Product[]): number => {
 
   return totalPice;
 };
-
-const products = [
-  { name: "Pen", price: 10, quantity: 2 },
-  { name: "Notebook", price: 25, quantity: 3, discount: 10 },
-  { name: "Bag", price: 50, quantity: 1, discount: 20 },
-];
