@@ -49,3 +49,12 @@ class Person {
     console.log(`Name:${this.name}, Age:${this.age}`);
   }
 }
+
+type item = {
+  title: string;
+  rating: number;
+};
+
+const filterByRating = (items: item[]): item[] => {
+  return items.filter((item) => item.rating >= 4);
+};
