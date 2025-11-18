@@ -45,8 +45,9 @@ class Person {
     this.name = name;
     this.age = age;
   }
+
   getDetails() {
-    console.log(`Name:${this.name}, Age:${this.age}`);
+    return `Name:${this.name}, Age:${this.age}`;
   }
 }
 
