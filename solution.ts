@@ -36,3 +36,16 @@ function getLength(value: string | any[]): number {
     return 0;
   }
 }
+
+class Person {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+  getDetails() {
+    console.log(`Name:${this.name}, Age:${this.age}`);
+  }
+}
