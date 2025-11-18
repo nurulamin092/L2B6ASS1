@@ -70,3 +70,97 @@ function filterActiveUser(users: userType[]): userType[] {
   const activeUser = users.filter((user) => user.isActive);
   return activeUser;
 }
+
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+  isAvailable: boolean;
+}
+
+function printBookDetails(book: Book) {
+  const { title, author, publishedYear, isAvailable } = book;
+
+  const bookAvailable = isAvailable ? "Yes" : "No";
+
+  console.log(
+    `Title: ${title}, Author:${author}, Published: ${publishedYear},
+     Available: ${bookAvailable}`
+  );
+}
+
+const myBook: Book = {
+  title: "The Great Gatsby",
+  author: "F. Scott Fitzgerald",
+  publishedYear: 1925,
+  isAvailable: false,
+};
+printBookDetails(myBook);
+
+type Value = string | number;
+
+const getUniqueValue = (arr1: Value[], arr2: Value[]): Value[] => {
+  const result: Value[] = [];
+
+  const margeArr: Value[] = [...arr1, ...arr2];
+
+  for (const item of margeArr) {
+    if (item === undefined) continue;
+
+    let exists = false;
+    for (const value of result) {
+      if (value === item) {
+        exists = true;
+        break;
+      }
+    }
+
+    if (!exists) {
+      result.push(item);
+    }
+  }
+
+  return result.sort((a, b) => {
+    if (typeof a === "number" && typeof b === "number") {
+      return a - b;
+    }
+    if (typeof a === "string" && typeof b === "string") {
+      return a.localeCompare(b);
+    }
+    if (typeof a === "number") {
+      return -1;
+    }
+    return 1;
+  });
+};
+
+interface Product {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+}
+
+const calculateTotalPrice = (products: Product[]): number => {
+  if (products.length === 0) {
+    return 0;
+  }
+  const totalPice = products
+    .map((product) => {
+      const totalProductPrice = product.price * product.quantity;
+      if (product.discount !== undefined && product.discount > 0) {
+        const discountAmount = (totalProductPrice * product.discount) / 100;
+        return totalProductPrice - discountAmount;
+      }
+      return totalProductPrice;
+    })
+    .reduce((item, currentValue) => item + currentValue, 0);
+
+  return totalPice;
+};
+
+const products = [
+  { name: "Pen", price: 10, quantity: 2 },
+  { name: "Notebook", price: 25, quantity: 3, discount: 10 },
+  { name: "Bag", price: 50, quantity: 1, discount: 20 },
+];
